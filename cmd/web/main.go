@@ -6,18 +6,20 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"text/template"
 
 	"github.com/kyteproject/golang-gist/pkg/models/mysql"
 )
 
 type application struct {
-	errorLog *log.Logger
-	infoLog  *log.Logger
-	snippets *mysql.SnippetModel
+	errorLog      *log.Logger
+	infoLog       *log.Logger
+	snippets      *mysql.SnippetModel
+	templateCache map[string]*template.Template
 }
 
 func main() {
-	dsn := flag.String("dsn", "web:pass@/snippetbox?parseTime=true", "MySQL data source name")
+	dsn := flag.String("dsn", "root:pass@/snippetbox?parseTime=true", "MySQL data source name")
 	addr := flag.String("addr", "localhost:4000", "HTTP network address")
 	flag.Parse()
 
@@ -30,10 +32,16 @@ func main() {
 	}
 	defer db.Close()
 
+	templateCache, err := newTemplateCache("./ui/html/")
+	if err != nil {
+		errorLog.Fatal(err)
+	}
+
 	app := &application{
-		errorLog: errorLog,
-		infoLog:  infoLog,
-		snippets: &mysql.SnippetModel{DB: db},
+		errorLog:      errorLog,
+		infoLog:       infoLog,
+		snippets:      &mysql.SnippetModel{DB: db},
+		templateCache: templateCache,
 	}
 
 	srv := &http.Server{
