@@ -5,6 +5,7 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/kyteproject/golang-gist/pkg/forms"
 	"github.com/kyteproject/golang-gist/pkg/models"
 )
 
@@ -17,8 +18,10 @@ var functions = template.FuncMap{
 }
 
 type templateData struct {
-	Snippet  *models.Snippet
-	Snippets []*models.Snippet
+	CurrentYear int
+	Form        *forms.Form
+	Snippet     *models.Snippet
+	Snippets    []*models.Snippet
 }
 
 func newTemplateCache(dir string) (map[string]*template.Template, error) {
