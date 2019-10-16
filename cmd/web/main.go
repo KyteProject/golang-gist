@@ -14,6 +14,10 @@ import (
 	"github.com/kyteproject/golang-gist/pkg/models/mysql"
 )
 
+type contextKey string
+
+var contextKeyUser = contextKey("user")
+
 type application struct {
 	errorLog      *log.Logger
 	infoLog       *log.Logger

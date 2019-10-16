@@ -18,7 +18,7 @@ var functions = template.FuncMap{
 }
 
 type templateData struct {
-	AuthenticatedUser int
+	AuthenticatedUser *models.User
 	CSRFToken         string
 	CurrentYear       int
 	Flash             string
