@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/golangcollege/sessions"
+	"github.com/kyteproject/golang-gist/pkg/models"
 	"github.com/kyteproject/golang-gist/pkg/models/mysql"
 )
 
@@ -19,12 +20,20 @@ type contextKey string
 var contextKeyUser = contextKey("user")
 
 type application struct {
-	errorLog      *log.Logger
-	infoLog       *log.Logger
-	session       *sessions.Session
-	snippets      *mysql.SnippetModel
+	errorLog *log.Logger
+	infoLog  *log.Logger
+	session  *sessions.Session
+	snippets interface {
+		Insert(string, string, string) (int, error)
+		Get(int) (*models.Snippet, error)
+		Latest() ([]*models.Snippet, error)
+	}
 	templateCache map[string]*template.Template
-	users         *mysql.UserModel
+	users         interface {
+		Insert(string, string, string) error
+		Authenticate(string, string) (int, error)
+		Get(int) (*models.User, error)
+	}
 }
 
 func main() {
