@@ -37,8 +37,9 @@ type application struct {
 }
 
 func main() {
+	dsnString := os.Getenv("DB_USER") + ":" + os.Getenv("DB_PASS") + "@tcp(" + os.Getenv("DB_HOST") + ")/snippetbox?parseTime=true"
 	dsn := flag.String("dsn", dsnString, "MySQL data source name")
-	addr := flag.String("addr", ":4000", "HTTP network address")
+	addr := flag.String("addr", ":8080", "HTTP network address")
 	secret := flag.String("secret", "s6Ndh+pPbnzHbS*+9Pk8qGWhTzbpa@ge", "Secret key")
 	flag.Parse()
 
