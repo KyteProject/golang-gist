@@ -5,7 +5,7 @@ This is an app made for educational purposes, it is **not intended for productio
 
 Check out Alex Edwards' book "Let's Go" to see where this project came from.
 
-[snippet-img]
+![Image of snippetbox website][snippet-img]
 
 ## Setup
 
