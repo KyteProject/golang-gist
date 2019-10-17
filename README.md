@@ -5,7 +5,7 @@ This is an app made for educational purposes, it is **not intended for productio
 
 Check out Alex Edwards' book "Let's Go" to see where this project came from.
 
-![Image of snippetbox website][snippet-img]
+![Image of snippetbox website](https://ukemi.ninja/1efc86b72fe4ebea0367b036dde2325f.png)
 
 ## Setup
 
@@ -182,6 +182,3 @@ ok      github.com/kyteproject/golang-gist/cmd/web      (cached)
     users_test.go:13: mysql: skipping integration test
 PASS
 ok      github.com/kyteproject/golang-gist/pkg/models/mysql     (cached)```
-
-<!-- Markdown link & img dfn's -->
-[snippet-img]: https://ukemi.ninja/1efc86b72fe4ebea0367b036dde2325f.png
