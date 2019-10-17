@@ -8,7 +8,7 @@ RUN apk update && apk add --no-cache gcc musl-dev git
 COPY go.mod go.sum ./
 RUN go mod download
 
-RUN mkdir tls && cd tls
+RUN mkdir -p tls && cd tls
 RUN go run /usr/local/go/src/crypto/tls/generate_cert.go --rsa-bits=2048 --host=localhost
 RUN cd ..
 
