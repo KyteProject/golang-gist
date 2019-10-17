@@ -1,5 +1,5 @@
 ### Snippetbox
-> An fullstack snippet posting app build with Go and SQL.
+> A fullstack snippet posting app build with Go and SQL.
 
 This is an app made for educational purposes, it is **not intended for production** and **is not secure!** It uses locally generates TLS certificates to listen and serve on HTTPS. There are some tests which you can see below.
 
