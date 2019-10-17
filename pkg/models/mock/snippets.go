@@ -14,12 +14,15 @@ var mockSnippet = &models.Snippet{
 	Expires: time.Now(),
 }
 
+// SnippetModel is a mock Snippet
 type SnippetModel struct{}
 
+// Insert inserts a mock snippet
 func (m *SnippetModel) Insert(title, content, expires string) (int, error) {
 	return 2, nil
 }
 
+// Get retreives a mock snippet
 func (m *SnippetModel) Get(id int) (*models.Snippet, error) {
 	switch id {
 	case 1:
@@ -29,6 +32,7 @@ func (m *SnippetModel) Get(id int) (*models.Snippet, error) {
 	}
 }
 
+// Latest retreives latest mock snippets
 func (m *SnippetModel) Latest() ([]*models.Snippet, error) {
 	return []*models.Snippet{mockSnippet}, nil
 }

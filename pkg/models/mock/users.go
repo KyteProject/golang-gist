@@ -13,8 +13,10 @@ var mockUser = &models.User{
 	Created: time.Now(),
 }
 
+//UserModel is a mock user model
 type UserModel struct{}
 
+// Insert inserts a mock user
 func (m *UserModel) Insert(name, email, password string) error {
 	switch email {
 	case "dupe@example.com":
@@ -24,6 +26,7 @@ func (m *UserModel) Insert(name, email, password string) error {
 	}
 }
 
+// Authenticate authenticates a mock user
 func (m *UserModel) Authenticate(email, password string) (int, error) {
 	switch email {
 	case "alice@example.com":
@@ -33,6 +36,7 @@ func (m *UserModel) Authenticate(email, password string) (int, error) {
 	}
 }
 
+// Get retreives a mock user
 func (m *UserModel) Get(id int) (*models.User, error) {
 	switch id {
 	case 1:

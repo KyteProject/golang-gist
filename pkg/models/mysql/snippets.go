@@ -6,10 +6,12 @@ import (
 	"github.com/kyteproject/golang-gist/pkg/models"
 )
 
+// SnippetModel holds the Database model
 type SnippetModel struct {
 	DB *sql.DB
 }
 
+// Insert inserts a snippet
 func (m *SnippetModel) Insert(title, content, expires string) (int, error) {
 
 	stmt := `INSERT INTO snippets (title, content, created, expires)
@@ -29,6 +31,7 @@ func (m *SnippetModel) Insert(title, content, expires string) (int, error) {
 
 }
 
+// Get retreives a snippet
 func (m *SnippetModel) Get(id int) (*models.Snippet, error) {
 	s := &models.Snippet{}
 	err := m.DB.QueryRow(`SELECT id, title, content, created, expires FROM snippets
@@ -42,6 +45,7 @@ func (m *SnippetModel) Get(id int) (*models.Snippet, error) {
 	return s, nil
 }
 
+// Latest gets the latest 10 snippets
 func (m *SnippetModel) Latest() ([]*models.Snippet, error) {
 
 	stmt := `SELECT id, title, content, created, expires FROM snippets
