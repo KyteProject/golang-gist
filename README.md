@@ -1,4 +1,4 @@
-### Snippetbox
+# Snippetbox
 > A fullstack snippet posting app build with Go and SQL.
 
 This is an app made for educational purposes, it is **not intended for production** and **is not secure!** It uses locally generates TLS certificates to listen and serve on HTTPS. There are some tests which you can see below.
@@ -29,7 +29,7 @@ $ docker-compose up
 https://localhost:8080
 ```
 
-# Architecture
+## Architecture
 ```
 app
 ├── cmd
@@ -102,7 +102,7 @@ app
 └── README.md
 ```
 
-# API
+## API
 
 | ENDPOINT        | HTTP Method | Parameters |
 | --------------- | ----------- | ---------- |
@@ -117,7 +117,7 @@ app
 | /user/logout    | POST        |            |
 | /user/ping      | GET         |            |
 
-# Tests
+## Tests
 
 ```
 $ go test -v -short ./...
